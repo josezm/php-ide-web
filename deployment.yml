@@ -1,0 +1,67 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ide-ui-service
+spec:
+  selector:
+    app: ide-ui
+  ports:
+    - protocol: 'TCP'
+      port: 8080
+      targetPort: 8080
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ide-ui
+spec:
+  selector:
+    matchLabels:
+      app: ide-ui
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ide-ui
+    spec:
+      containers:
+        - name: ide-ui
+          image: ide-ui
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ide-app
+spec:
+  selector:
+    matchLabels:
+      app: ide-app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ide-app
+    spec:
+      containers:
+        - name: ide-app
+          image: ide-app
+          imagePullPolicy: Never
+          ports:
+            - name: http
+              containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ide-app
+spec:
+  selector:
+    app: ide-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: http

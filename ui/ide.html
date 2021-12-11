@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>
+        < JJ IDE />
+    </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+</head>
+
+<body class="bg-color-darkblue">
+    <div class="title py-5 text-center text-5xl font-bold text-white animate__animated animate__shakeX">
+        < JJ IDE /> </div>
+    <div class="h-full">
+        <div class="flex flex-row h-screen">
+            <div class="bg-color-yellow rounded-xl pt-5 ml-5">
+                <select id="languages" class=" text-4xl text-center bg-transparent" onchange="changeLanguage()">
+                    <option class='bg-color-yellow' value="javascript"> &#xf3b9; </option>
+                    <option class='bg-color-yellow' value="python"> &#xf3e2; </option>
+                    <option class='bg-color-yellow' value="php"> &#xf457; </option>
+                </select>
+                <div id="language-name" class="language-name text-xl text-center mt-5 ml-5 transform rotate-180 font-bold animate__animated animate__pulse">
+                    JAVASCRIPT
+                </div>
+            </div>
+
+            <div class="w-1/2 rounded-xl mx-5 text-xl bg-color-blackblue" id="editor"></div>
+            <div class="h-full w-1/2 mx-5">
+                <button class=" w-full rounded-xl h-10 bg-color-yellow mb-2 text-center hover:bg-yellow-400" onclick="executeCode()">
+                    <i class="fa-solid fa-play"></i>
+                </button>
+                <div id="output" class="output bg-white h-full text-xl text-black border-2 rounded-xl p-5"> <span class="animate__animated animate__flash"> >> </span> </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="js/lib/ace.js"></script>
+    <script src="js/lib/theme-nord_dark.js"></script>
+    <script src="js/ide.js"></script>
+
+</body>
+
+</html>
